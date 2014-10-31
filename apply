@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+if [ $# -eq 0 ]; then
+	scheme=$(ls -1 output/termite | grep .light | sed -e 's/base16-//' -e 's/.light.config//' | fzf)
+else
+	scheme=$1
+fi
+
+termite_light="output/termite/base16-${scheme}.light.config"
+termite_dark="output/termite/base16-${scheme}.dark.config"
+
+echo "Applying ${scheme}..."
+
+sed -i -ne "/### BEGIN COLORS/ {p; r $termite_light" -e ':a; n; /### END COLORS/ {p; b}; ba}; p' ~/.config/termite/config_light
+sed -i -ne "/### BEGIN COLORS/ {p; r $termite_dark" -e ':a; n; /### END COLORS/ {p; b}; ba}; p' ~/.config/termite/config_dark
+
+~/.local/bin/brighside
