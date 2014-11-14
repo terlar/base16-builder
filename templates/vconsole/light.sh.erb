@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Base16 <%= @scheme %> - Virtual console color setup script
 # <%= @author %>
 
@@ -9,7 +9,7 @@ color03="<%= @base["0A"]["hex"] %>" # Base 0A - Yellow
 color04="<%= @base["0D"]["hex"] %>" # Base 0D - Blue
 color05="<%= @base["0E"]["hex"] %>" # Base 0E - Magenta
 color06="<%= @base["0C"]["hex"] %>" # Base 0C - Cyan
-color07="<%= @base["02"]["hex"] %>" # Base 02 - Black
+color07="<%= @base["00"]["hex"] %>" # Base 00 - Bright Black
 color08="<%= @base["05"]["hex"] %>" # Base 05 - Bright White
 color09=$color01 # Base 08 - Bright Red
 color10=$color02 # Base 0B - Bright Green
@@ -17,7 +17,7 @@ color11=$color03 # Base 0A - Bright Yellow
 color12=$color04 # Base 0D - Bright Blue
 color13=$color05 # Base 0E - Bright Magenta
 color14=$color06 # Base 0C - Bright Cyan
-color15="<%= @base["00"]["hex"] %>" # Base 00 - Bright Black
+color15="<%= @base["04"]["hex"] %>" # Base 02 - Grey
 
 # 16 color space
 echo -e "\e]P0$color00"
@@ -36,8 +36,7 @@ echo -e "\e]PC$color12"
 echo -e "\e]PD$color13"
 echo -e "\e]PE$color14"
 echo -e "\e]PF$color15"
-echo -e "\e[H"
-echo -e "\e[2J"
+echo -e "\e[H\e[2J"
 
 # clean up
 unset color00

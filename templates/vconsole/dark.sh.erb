@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Base16 <%= @scheme %> - Virtual console color setup script
 # <%= @author %>
 
@@ -36,8 +36,7 @@ echo -e "\e]PC$color12"
 echo -e "\e]PD$color13"
 echo -e "\e]PE$color14"
 echo -e "\e]PF$color15"
-echo -e "\e[H"
-echo -e "\e[2J"
+echo -e "\e[H\e[2J"
 
 # clean up
 unset color00
